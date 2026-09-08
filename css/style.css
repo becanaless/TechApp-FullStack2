@@ -1,3 +1,21 @@
 .body {
     font-family: Arial, Helvetica, sans-serif;
 }
+from{
+    border: solid 1px red;
+    backgrounud
+}
+
+/* grid 12 columns */
+.row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.col-1 { grid-column: span 1; }
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+.col-5 { grid-column: span 5; }
+.col-6 { grid-column: span 6; }
