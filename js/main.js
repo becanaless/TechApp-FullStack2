@@ -1,56 +1,54 @@
 console.log("Hello, world!")
 
 document.addEventListener("DOMContentLoaded", () => {
-  const loginForm = document.querySelector('form[action="/login"]');
-  const registerForm = document.querySelector('form[action="/register"]');
+    const loginForm = document.querySelector('form[action="/login"]');
+    const registerForm = document.querySelector('form[action="/register"]');
 
-  //Login
-  if (loginForm) {
-    loginForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const usernameInput = loginForm.querySelector("#login-username") || loginForm.querySelector("#username");
-      const passwordInput = loginForm.querySelector("#login-password") || loginForm.querySelector("#password");
+    //Login
+    if (loginForm) {
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const usernameInput = loginForm.querySelector("#login-username") || loginForm.querySelector("#username");
+            const passwordInput = loginForm.querySelector("#login-password") || loginForm.querySelector("#password");
 
-      const username = usernameInput?.value.trim();
-      const password = passwordInput?.value.trim();
+            const username = usernameInput?.value.trim();
+            const password = passwordInput?.value.trim();
 
-      if (!username || !password) {
-        alert("Por favor, completa todos los campos.");
-        return;
-      }
+            if (!username || !password) {
+                alert("Por favor, completa todos los campos.");
+                return;
+            }
 
-      console.log("Intentando iniciar sesión con:", { username, password });
-      //test de login
-      alert(`¡Bienvenido de nuevo, ${username}!`);
-      loginForm.reset();
-    });
-  }
+            console.log("Intentando iniciar sesión con:", { username, password });
+            //test de login
+            alert(`¡Bienvenido de nuevo, ${username}!`);
+            loginForm.reset();
+        });
+    }
+    //Register
+    if (registerForm) {
+        registerForm.addEventListener("submit", (e) => {
+            e.preventDefault();
 
-  // Register
-  if (registerForm) {
-    registerForm.addEventListener("submit", (e) => {
-      e.preventDefault(); // Evita que la página se recargue
+            const nameInput = registerForm.querySelector("#reg-name");
+            const emailInput = registerForm.querySelector("#reg-email");
+            const passwordInput = registerForm.querySelector("#reg-password");
+            const confirmPasswordInput = registerForm.querySelector("#reg-confirm-password");
 
-      const nameInput = registerForm.querySelector("#reg-name");
-      const emailInput = registerForm.querySelector("#reg-email");
-      const passwordInput = registerForm.querySelector("#reg-password");
-      const confirmPasswordInput = registerForm.querySelector("#reg-confirm-password");
+            const fullname = nameInput?.value.trim();
+            const email = emailInput?.value.trim();
+            const password = passwordInput?.value;
+            const confirmPassword = confirmPasswordInput?.value;
 
-      const fullname = nameInput?.value.trim();
-      const email = emailInput?.value.trim();
-      const password = passwordInput?.value;
-      const confirmPassword = confirmPasswordInput?.value;
+            if (confirmPasswordInput && password !== confirmPassword) {
+                alert("Las contraseñas no coinciden. Por favor, verifica.");
+                return;
+            }
 
-      // Validación de coincidencia de contraseñas (si existe el campo de confirmación)
-      if (confirmPasswordInput && password !== confirmPassword) {
-        alert("Las contraseñas no coinciden. Por favor, verifica.");
-        return;
-      }
-
-      console.log("Registrando usuario:", { fullname, email });
-      //test de registro
-      alert("¡Cuenta creada con éxito!");
-      registerForm.reset();
-    });
-  }
+            console.log("Registrando usuario:", { fullname, email });
+            // Simulación de registro exitoso
+            alert("¡Cuenta creada con éxito!");
+            registerForm.reset();
+        });
+    }
 });
